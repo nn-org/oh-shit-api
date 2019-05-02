@@ -1,0 +1,10 @@
+{
+  "user": {
+    "number": 1234567890,
+    "firstName": "Ned",
+    "lastName": "Stark",
+    "age": 47,
+    "gender": "Male",
+    "address": "Winterfell Castle, top chamber"
+  }
+}

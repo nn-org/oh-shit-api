@@ -1,0 +1,13 @@
+# package directories
+node_modules
+jspm_packages
+
+# usual suspects
+.DS_Store
+.env
+
+# temp files
+temp.js
+
+# Serverless directories
+.serverless

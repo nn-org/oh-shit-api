@@ -1,0 +1,20 @@
+service: oshit
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  stage: ${opt:stage,'dev'}
+  timeout: 10s
+
+functions:
+  log:
+    description: logs the content of SQS messages
+    handler: handler.log
+    environment:
+      STAGE: ${self:provider.stage}
+      QUEUE_URL: ${env:QUEUE_URL}
+    events:
+      - sqs:
+          arn: ${env:SQS_ARN}
+          batchSize: 10

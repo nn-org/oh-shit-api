@@ -1,0 +1,11 @@
+{
+  "user": {
+    "phoneNumber": 1234567890,
+    "injured": true,
+    "vehicle": false,
+    "location": {
+      "latitude": 38.792556,
+      "longitude": -9.3915316
+    }
+  }
+}

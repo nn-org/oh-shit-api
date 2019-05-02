@@ -1,0 +1,17 @@
+{
+  "user": {
+    "firstName": "Ned",
+    "lastName": "Stark",
+    "age": 47,
+    "gender":"Male",
+    "records": [],
+    "onMedication": true,
+    "medication": [
+      {
+        "item": "Insuline",
+        "instructions": "thrice a day, after every meal",
+        "prescriptionUrl": "www.s3.com/prescriptions/jwidniob3hy3ba"
+      }
+    ]
+  }
+}

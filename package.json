@@ -1,0 +1,15 @@
+{
+  "name": "oshit-api",
+  "version": "1.0.0",
+  "description": "This API will put victims on a map and share it with rescue services",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "cd serverless && sls deploy --stage dev"
+  },
+  "author": "storycoding",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.448.0",
+    "uuid": "^3.3.2"
+  }
+}
