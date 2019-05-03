@@ -6,7 +6,6 @@ provider:
   region: eu-west-1
   stage: ${opt:stage,'dev'}
   timeout: 10s
-  role: ${env:IAM_ROLE_ARN}
 
 functions:
   addVictimToQueue:
@@ -15,7 +14,7 @@ functions:
     environment:
       STAGE: ${self:provider.stage}
       QUEUE_URL: ${env:QUEUE_URL}
-      IAM_ROLE_ARN: ${env:IAM_ROLE_ARN}
+    role: ${env:IAM_ROLE_SQS_FULL_ARN}
     events:
       - http:
           path: queue/add
