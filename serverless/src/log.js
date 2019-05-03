@@ -1,23 +1,30 @@
 module.exports = async (event) => {
-  const victim = {};
 
-  event.Records.forEach( record => {
-    const { body, messageAttributes } = record;
-    console.log({record});
-    console.log({body});
-    console.log({messageAttributes});
-    
-    for(let key in messageAttributes) {
-      victim[key] = messageAttributes[key].stringValue;
-    }
-    console.log({victim});
-  });
+  try {
+    event.Records.forEach( record => {
+      console.log({record});
+      const body = JSON.parse(record.body);
+      console.log({body});
+    });
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'processed content successfully',
-      input: event,
-    }, null, 2),
-  };
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'processed content successfully',
+        input: event,
+      }, null, 2),
+    };
+  } catch(err) {
+    console.log({err});
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: 'failed to iterate over event.Records',
+        input: event,
+      }, null, 2),
+    };
+  }
+  
+
+  
 };

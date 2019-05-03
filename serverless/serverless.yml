@@ -6,14 +6,25 @@ provider:
   region: eu-west-1
   stage: ${opt:stage,'dev'}
   timeout: 10s
+  role: ${env:IAM_ROLE_ARN}
 
 functions:
-  log:
-    description: logs the content of SQS messages
-    handler: handler.log
+  addVictimToQueue:
+    description: adds victim data from the oshit app to the SQS queue
+    handler: src/handler.addVictimToQueue
     environment:
       STAGE: ${self:provider.stage}
       QUEUE_URL: ${env:QUEUE_URL}
+      IAM_ROLE_ARN: ${env:IAM_ROLE_ARN}
+    events:
+      - http:
+          path: queue/add
+          method: post
+  log:
+    description: logs the content of SQS messages
+    handler: src/handler.log
+    environment:
+      STAGE: ${self:provider.stage}
     events:
       - sqs:
           arn: ${env:SQS_ARN}
