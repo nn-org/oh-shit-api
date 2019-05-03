@@ -19,12 +19,22 @@ functions:
       - http:
           path: queue/add
           method: post
+  dynamoWriteVictim:
+    description: adds victim data from SQS to the dynamoDB
+    handler: src/handler.dynamoWriteVictim
+    environment:
+      STAGE: ${self:provider.stage}
+    role: ${env:IAM_ROLE_DYNAMO_DB_FULL_ARN}
+    events:
+      - sqs:
+          arn: ${env:SQS_VICTIMS_ARN}
+          batchSize: 10
   log:
-    description: logs the content of SQS messages
+    description: logs the content of the Dead Letter Queue for debugging
     handler: src/handler.log
     environment:
       STAGE: ${self:provider.stage}
     events:
       - sqs:
-          arn: ${env:SQS_ARN}
+          arn: ${env:SQS_VICTIMS_DLQ_ARN}
           batchSize: 10
