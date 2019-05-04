@@ -29,6 +29,16 @@ functions:
       - sqs:
           arn: ${env:SQS_VICTIMS_ARN}
           batchSize: 10
+  dynamoScanVictims:
+    description: retrieves victims data from the dynamoDB
+    handler: src/handler.dynamoScanVictims
+    environment:
+      STAGE: ${self:provider.stage}
+    role: ${env:IAM_ROLE_DYNAMO_DB_FULL_ARN}
+    events:
+      - http:
+          path: dynamodb/get
+          method: get
   log:
     description: logs the content of the Dead Letter Queue for debugging
     handler: src/handler.log
