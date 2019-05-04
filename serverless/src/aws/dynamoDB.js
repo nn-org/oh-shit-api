@@ -26,6 +26,16 @@ const batchWrite = async items => {
   return res;
 }
 
+const scan = async () => {
+  const params = {
+    TableName : 'victims',
+  };
+
+   const res = await dynamodb.scan(params).promise();
+  return res;
+}
+
 module.exports = {
   batchWrite,
+  scan,
 }
