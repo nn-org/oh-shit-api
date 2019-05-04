@@ -19,9 +19,9 @@ functions:
       - http:
           path: queue/add
           method: post
-  dynamoWriteVictim:
-    description: adds victim data from SQS to the dynamoDB
-    handler: src/handler.dynamoWriteVictim
+  dynamoWriteVictims:
+    description: adds victims data from SQS to the dynamoDB
+    handler: src/handler.dynamoWriteVictims
     environment:
       STAGE: ${self:provider.stage}
     role: ${env:IAM_ROLE_DYNAMO_DB_FULL_ARN}
