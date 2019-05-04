@@ -1,5 +1,5 @@
 {
-  "name": "oshit-api",
+  "name": "oh-shit-api",
   "version": "1.0.0",
   "description": "This API will put victims on a map and share it with rescue services",
   "main": "index.js",

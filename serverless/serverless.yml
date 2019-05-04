@@ -1,4 +1,4 @@
-service: oshit
+service: oh-shit-api
 
 provider:
   name: aws
