@@ -1,11 +1,11 @@
 const log = require("./log");
 const addVictimToQueue = require("./add-victim-to-queue");
-const dynamoWriteVictim = require("./dynamo-write-victim");
+const dynamoWriteVictims = require("./dynamo-write-victims");
 const dynamoScanVictims = require("./dynamo-scan-victims");
 
 module.exports = {
   log,
   addVictimToQueue,
-  dynamoWriteVictim,
+  dynamoWriteVictims,
   dynamoScanVictims,
 }
